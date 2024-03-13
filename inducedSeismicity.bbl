@@ -1,0 +1,154 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{BibEntry2018Mar}{misc}{}
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \field{sortinit}{G}
+      \field{sortinithash}{62eb2aa29549e4fdbd3cb154ec5711cb}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Earth-Sci. Rev.}
+      \field{month}{3}
+      \field{note}{[Online; accessed 8. Mar. 2023]}
+      \field{title}{{Global review of human-induced earthquakes}}
+      \field{volume}{178}
+      \field{year}{2018}
+      \field{pages}{438\bibrangedash 514}
+      \range{pages}{77}
+      \verb{doi}
+      \verb 10.1016/j.earscirev.2017.07.008
+      \endverb
+    \endentry
+    \entry{Mignan2017Oct}{article}{}
+      \name{author}{4}{}{%
+        {{hash=76fc984c7834191fbf78d312a4ca5443}{%
+           family={Mignan},
+           familyi={M\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+        {{hash=2584c29b73bc709243398d7171c2c682}{%
+           family={Broccardo},
+           familyi={B\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=a95a16d0dcb28cb0528e98f6970e748d}{%
+           family={Wiemer},
+           familyi={W\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+        {{hash=70bf0096a22bf0204b03f78d2ac251f4}{%
+           family={Giardini},
+           familyi={G\bibinitperiod},
+           given={D.},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Nature Publishing Group}%
+      }
+      \strng{namehash}{33ff9d0e737cd68b7386d522e3093ff1}
+      \strng{fullhash}{18387f8a014efb444b9614bf911d3cd9}
+      \strng{bibnamehash}{33ff9d0e737cd68b7386d522e3093ff1}
+      \strng{authorbibnamehash}{33ff9d0e737cd68b7386d522e3093ff1}
+      \strng{authornamehash}{33ff9d0e737cd68b7386d522e3093ff1}
+      \strng{authorfullhash}{18387f8a014efb444b9614bf911d3cd9}
+      \field{sortinit}{M}
+      \field{sortinithash}{2e5c2f51f7fa2d957f3206819bf86dc3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{2045-2322}
+      \field{journaltitle}{Sci. Rep.}
+      \field{month}{10}
+      \field{number}{13607}
+      \field{title}{{Induced seismicity closed-form traffic light system for actuarial decision-making during deep fluid injections}}
+      \field{volume}{7}
+      \field{year}{2017}
+      \field{pages}{1\bibrangedash 10}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1038/s41598-017-13585-9
+      \endverb
+    \endentry
+    \entry{Urban2016May}{article}{}
+      \name{author}{6}{}{%
+        {{hash=d795e2ca5ed53272c691c5bd47e03412}{%
+           family={Urban},
+           familyi={U\bibinitperiod},
+           given={Pawel},
+           giveni={P\bibinitperiod}}}%
+        {{hash=74e33ef500939fcf914283a92b4b1da7}{%
+           family={Lasocki},
+           familyi={L\bibinitperiod},
+           given={Stanislaw},
+           giveni={S\bibinitperiod}}}%
+        {{hash=83b0bb16bf33aa25c0c1110cb2cf4c35}{%
+           family={Blascheck},
+           familyi={B\bibinitperiod},
+           given={Patrick},
+           giveni={P\bibinitperiod}}}%
+        {{hash=57b603c5f52463b1ea40b8fad2bfa492}{%
+           family={Nascimento},
+           familyi={N\bibinitperiod},
+           given={Aderson\bibnamedelima Farias},
+           giveni={A\bibinitperiod\bibinitdelim F\bibinitperiod},
+           prefix={do},
+           prefixi={d\bibinitperiod}}}%
+        {{hash=51c8f8c0f689bbb06506e501f6b0bc88}{%
+           family={Van\bibnamedelima Giang},
+           familyi={V\bibinitperiod\bibinitdelim G\bibinitperiod},
+           given={Nguyen},
+           giveni={N\bibinitperiod}}}%
+        {{hash=ba5cba5e2751b03e6ded0d3872087682}{%
+           family={Kwiatek},
+           familyi={K\bibinitperiod},
+           given={Grzegorz},
+           giveni={G\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer International Publishing}%
+      }
+      \strng{namehash}{5c8160eeec4eda5ddb1becc8348ca85a}
+      \strng{fullhash}{4cec46fa0a71274ea3c9a66716729782}
+      \strng{bibnamehash}{5c8160eeec4eda5ddb1becc8348ca85a}
+      \strng{authorbibnamehash}{5c8160eeec4eda5ddb1becc8348ca85a}
+      \strng{authornamehash}{5c8160eeec4eda5ddb1becc8348ca85a}
+      \strng{authorfullhash}{4cec46fa0a71274ea3c9a66716729782}
+      \field{sortinit}{U}
+      \field{sortinithash}{77a6935510e008adcf5b555e7b4f0711}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1420-9136}
+      \field{journaltitle}{Pure Appl. Geophys.}
+      \field{month}{5}
+      \field{number}{5}
+      \field{title}{{Violations of Gutenberg–Richter Relation in Anthropogenic Seismicity}}
+      \field{volume}{173}
+      \field{year}{2016}
+      \field{pages}{1517\bibrangedash 1537}
+      \range{pages}{21}
+      \verb{doi}
+      \verb 10.1007/s00024-015-1188-5
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
