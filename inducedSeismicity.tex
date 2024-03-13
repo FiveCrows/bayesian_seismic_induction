@@ -1,7 +1,10 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
+\usepackage{float}
 \usepackage{amsmath}
 \usepackage{mathtools}
+\usepackage{biblatex}
+\addbibresource{seisBib.bib}
 \title{Bayesian Methods for Modeling Induced Seismicity}
 \author{Bryan Azbill}
 \date{March 2023}
@@ -9,7 +12,108 @@
 
 \begin{document}
 \maketitle
-\section{Objective}
+\section{Introduction}
+    Fluid induced seismicity is a well known consequence of subsurface fluid injections, operations typically for Wastewater disposal or fracking.   
+    Rock fracturing by fluid injection is well known as used for oil recovery but also has other purposes, such as enhancing geothermal systems.
+    While most induced seismicity is small and of little consequence, seismic events large enough to cause potential damage and alert public concern
+    can and have occured. Therefore, it is prudent to take measure of induced seismic events to predict potential  hazard during     
+    injection and judge when an injection procedure should be stalled or aborted.\cite{BibEntry2018Mar}
+    Traffic light systems are used in practiced, where predictions of the largest potential magnitude of future seismic events, are compared  
+    to an acceptable limit which in turn tells the operator if they should slow, or stop injection. However, designing effective algorithms for this function is an 
+    ongoing process that needs development.\cite{Mignan2017Oct} The purpose of this project is to  develop  bayesian algorithms that uses the locations and magnitudes of
+    previously recorded seismic events to predicts the  seismic events about to occur as a function of injection volume, with their distribution of magnitudes, 
+    the largest magnitude of the events, and updates to prediction after ever new recorded seismic event. This project will study induced seismicity records from 
+    the Utah "FORGE" project in particular, which is an enhanced geothermal systems research project that has been injecting in wells at Beaver County Utah and reading the seismic data
+    with high precision. Additionally, another round of injections fore research is scheduled to be performed at the FORGE site in  April 2023
+
+\section{Analysis}
+    A current routine analysis of the problem starts with the following assumptions: 
+    \begin{enumerate}
+        \item That by the time all induced seismicity is released for some injection Volume  V, the cumulative induced seismic moment $M_0 = \sum_i(m_{0i})$ will be proportional to volume
+        \begin{equation}
+        dM_0/dV = c
+        \end{equation}
+        \item That the relationship between the pdf of seismic events \textbf{moment magnitudes} $m_i$ above some threshold M can be effectively approximated with an exponential distribution, known as the Gutenberg-richter law
+        \begin{equation}
+        P(m<M+x|m>M) = 1-e^{-bx}
+        \end{equation}        
+    \end{enumerate}
+    Actually, the Gutenberg richter law does not accurately describe induced seismicity, as the seismic moment probability distributions of induced seismicity often differs from the exponential  at the tail of the distribution, because limiting sizes of the stimulated  
+    reservoir also puts a limit on the impacted fault area. \cite{Urban2016May} these assumptions overestimate the risk of induced seismicity. The goal of this project is to create a model that better accounts for the differences at the tail of the induced 
+    moment magnitude distribution. Nonetheless, It's useful start with derivation assuming GR-law and then proceed to try account for a more complex relationship. 
+    Suppose $N_M$ is the number of earthquakes with magnitude greater than M occur under assumptions 1 and 2. Then for some threshold x the probability p that not any one of the them is greater than x above  is 
+\begin{equation}
+\label{eqn:a}
+    p = p(m_1<M+x)*p(m_2<M+x)*...*p(m_{N_M}<M+x) = (1-e^{-bx})^{N_M}
+\end{equation}
 
 
+
+\begin{equation}
+    \tag{apply log}
+    ln(p) = N_M ln((1-e^{-bx}))
+    \label{eqn:d1}
+    \end{equation}
+    
+    \begin{equation}
+    \tag{ln(1+dx) $\approx$ dx}
+    ln(p) = -N_M e^{-bx}
+    \end{equation}
+    
+    \begin{equation}
+    \tag{simplify expression}
+    e^{-bx} = \frac{-ln(p)}{N_M}
+\end{equation}
+
+\begin{equation}
+    \tag{apply ln, simplify }
+    x = ln(\frac{N_M}{-ln(p)}) \frac{1}{b}
+\end{equation}
+
+again, $N_M$ defiines the number of events above magnitude N to include in the model, b the shape of the exponential, and $p$ the probability that the largest magnitude occured is bigger than x
+
+\section{Results}
+
+    Three stages of fluid injection were carried out in the forge site during April of 2022. The cumulative induced seismicity vs volume is plotted in the chart below:
+    \begin{figure}[H]        
+        \centering
+        \includegraphics*[width = \textwidth, height = \textheight, keepaspectratio]{stageplot.png}
+    \end{figure}
+
+    \begin{figure}[H]        
+        \centering
+        \includegraphics*[width = \textwidth, height = \textheight, keepaspectratio]{logSeismicHistogram.png}
+        \caption{histograms of the seismic magnitude distribution}
+    \end{figure}
+
+    \begin{figure}[H]        
+        \centering
+        \includegraphics*[width = \textwidth, height = \textheight, keepaspectratio]{bVsoffset.png}
+        \caption{maximum likelihood b value vs M (minimum magnitude threshold)}
+    \end{figure}
+
+
+    The long tail of the distribution can be further confirmed by checking the b fit value as a function of minimum magnitude.
+    
+    Originally, geoscientists included M into the distribution to discount that fewer small events can be detected than fits an exponential distribution. 
+    However, raising it much further provides an even better fit.
+    \begin{figure}[H]
+    \centering
+    \includegraphics*[width = \textwidth, height = \textheight, keepaspectratio]{fantasticFit.png}
+    \caption{Fitting maximum magnitude prediction with a small vs large M value, and a ten percent probability of a larger maximum}
+    \end{figure}
+    Fitting to the maximum seismic event as a function of injection volumue  using a high M value and b value, matches the tail of the distribution 
+    much better, and therefore is accurate while the industry standard model, which doesnt account for the distribution tail,  is not
+\section{Model Plan}
+    This  model uses the full data for the data its predicting, but its only appropriate for a model to only predict future maximum using past maximum events. 
+    Additionally, as I have learned in class, instead of raising the M value, the long tail of the distribution should be fit by updating the posterior  distribution of b 
+    using a well designed prior. I want to write an algorithm that uses baysesian methods on the prior of the b value distribution to can update the distribution after every past event.
+    Aditionally, it would be nice if studying the b value distribution can provide insight about why actual physics of induced seismicity produces. Ideally, 
+    the best statistical model should also ralate to whats occuring in the subsurface, and could update prior involving probability distributions of things like rock stress
+    and the size of faults the cross the reservoir. When relating to geomechanics, a different magnitude scale is used, called seismic moment, the random variable of which is the exponential 
+    of moment magnitude, making it a pareto distribution. In seismic moment scale, magnitude is proportional to rupture area of the fault, and I would like to study seismic moment     
+    in order to gather insight about how the long tail of magnitude distribution might relate to the area of faults crossing the reservoir ath the forge site.  
+    I want to use the new model design to predict the seismicity that will be induced at the Utah FORGE site this April, but the raw seismic from that may or may not be processed into     
+    event magnitudes to validate by the end of the semester. 
+    \printbibliography
 \end{document}
